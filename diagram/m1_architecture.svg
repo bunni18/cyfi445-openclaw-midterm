@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1100" width="1400" height="1100" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1f2937"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="1100" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="40" y="42" font-size="26" font-weight="bold" fill="#111827">OpenClaw Tool-Calling Architecture — M1 Observed Run</text>
+  <text x="40" y="66" font-size="15" fill="#4b5563">OpenClaw 2026.10.4 (383c124) · agent "Frankie" · model google/gemini-3.5-flash-lite · session tui-e4dd29e6…</text>
+
+  <!-- VM boundary -->
+  <rect x="30" y="90" width="1052" height="560" rx="14" fill="#f9fafb" stroke="#9ca3af" stroke-width="2" stroke-dasharray="10 6"/>
+  <text x="50" y="118" font-size="16" font-weight="bold" fill="#374151">University of Baltimore course VM (Linux, Node 24)</text>
+
+  <!-- TUI -->
+  <rect x="60" y="140" width="200" height="90" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="160" y="175" font-size="17" font-weight="bold" text-anchor="middle" fill="#1e3a8a">User → TUI client</text>
+  <text x="160" y="200" font-size="14" text-anchor="middle" fill="#1e3a8a">openclaw tui</text>
+
+  <!-- Gateway -->
+  <rect x="330" y="140" width="220" height="90" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="440" y="175" font-size="17" font-weight="bold" text-anchor="middle" fill="#1e3a8a">Gateway</text>
+  <text x="440" y="200" font-size="14" text-anchor="middle" fill="#1e3a8a">ws://127.0.0.1:18789</text>
+
+  <!-- Agent runtime -->
+  <rect x="620" y="140" width="340" height="110" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="790" y="170" font-size="17" font-weight="bold" text-anchor="middle" fill="#4c1d95">Agent runtime (Frankie)</text>
+  <text x="790" y="195" font-size="14" text-anchor="middle" fill="#4c1d95">session context + tool definitions</text>
+  <text x="790" y="218" font-size="14" text-anchor="middle" fill="#4c1d95">visible tools: exec, wait (code mode)</text>
+
+  <!-- Policy / registry -->
+  <rect x="620" y="300" width="340" height="80" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="790" y="332" font-size="17" font-weight="bold" text-anchor="middle" fill="#7f1d1d">Tool registry / policy check</text>
+  <text x="790" y="356" font-size="14" text-anchor="middle" fill="#7f1d1d">rejects unknown tools ("Tool read not found")</text>
+
+  <!-- Executor -->
+  <rect x="620" y="420" width="340" height="80" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="790" y="452" font-size="17" font-weight="bold" text-anchor="middle" fill="#14532d">Tool executor: exec (code mode)</text>
+  <text x="790" y="476" font-size="14" text-anchor="middle" fill="#14532d">runs nested read via tool catalog</text>
+
+  <!-- Data -->
+  <rect x="620" y="550" width="340" height="70" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="790" y="580" font-size="17" font-weight="bold" text-anchor="middle" fill="#78350f">Workspace data</text>
+  <text x="790" y="603" font-size="14" text-anchor="middle" fill="#78350f">midterm_data/devices.csv</text>
+
+  <!-- Trajectory store -->
+  <rect x="60" y="430" width="440" height="140" rx="10" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+  <text x="280" y="462" font-size="17" font-weight="bold" text-anchor="middle" fill="#111827">Trajectory capture (per-agent SQLite)</text>
+  <text x="280" y="488" font-size="14" text-anchor="middle" fill="#111827">export: openclaw sessions export-trajectory</text>
+  <text x="280" y="512" font-size="14" text-anchor="middle" fill="#111827">events.jsonl → tool.call / tool.result</text>
+  <text x="280" y="536" font-size="14" text-anchor="middle" fill="#111827">tool name · args · call ID · success · result</text>
+
+  <!-- Gemini (outside VM) -->
+  <rect x="1090" y="130" width="280" height="130" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="1230" y="165" font-size="17" font-weight="bold" text-anchor="middle" fill="#0c4a6e">Hosted model</text>
+  <text x="1230" y="190" font-size="14" text-anchor="middle" fill="#0c4a6e">Google Gemini API</text>
+  <text x="1230" y="212" font-size="14" text-anchor="middle" fill="#0c4a6e">gemini-3.5-flash-lite</text>
+  <text x="1230" y="238" font-size="13" text-anchor="middle" fill="#0c4a6e">chooses the tool call</text>
+
+  <!-- Arrows: request path -->
+  <line x1="260" y1="170" x2="326" y2="170" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <line x1="550" y1="170" x2="616" y2="170" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="293" y="162" font-size="15" font-weight="bold" text-anchor="middle" fill="#111827">1</text>
+  <text x="583" y="162" font-size="15" font-weight="bold" text-anchor="middle" fill="#111827">1</text>
+
+  <!-- Return path -->
+  <line x1="616" y1="210" x2="554" y2="210" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <line x1="326" y1="210" x2="264" y2="210" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="583" y="230" font-size="15" font-weight="bold" text-anchor="middle" fill="#111827">9</text>
+  <text x="293" y="230" font-size="15" font-weight="bold" text-anchor="middle" fill="#111827">9</text>
+
+  <!-- Runtime <-> Gemini -->
+  <line x1="960" y1="160" x2="1086" y2="160" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="1018" y="135" font-size="13" text-anchor="middle" fill="#111827">2, 7: prompt +</text>
+  <text x="1018" y="150" font-size="13" text-anchor="middle" fill="#111827">tool defs / results</text>
+  <line x1="1086" y1="225" x2="964" y2="225" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="1018" y="191" font-size="13" text-anchor="middle" fill="#111827">3, 8: tool call</text>
+  <text x="1018" y="206" font-size="13" text-anchor="middle" fill="#111827">+ call ID / answer</text>
+
+  <!-- Runtime -> policy -> executor -> data -->
+  <line x1="790" y1="250" x2="790" y2="296" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="805" y="280" font-size="15" font-weight="bold" fill="#111827">4</text>
+  <line x1="790" y1="380" x2="790" y2="416" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="805" y="404" font-size="13" fill="#111827">allowed (exec)</text>
+  <line x1="760" y1="500" x2="760" y2="546" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="700" y="530" font-size="15" font-weight="bold" fill="#111827">5 read</text>
+  <line x1="830" y1="550" x2="830" y2="504" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="845" y="530" font-size="13" fill="#111827">CSV row</text>
+
+  <!-- Result back to runtime (left corridor) -->
+  <polyline points="620,460 590,460 590,235 616,235" fill="none" stroke="#1f2937" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="535" y="340" font-size="15" font-weight="bold" fill="#111827">6</text>
+  <text x="520" y="358" font-size="13" fill="#111827">tool.result</text>
+
+  <!-- Rejection back from policy -->
+  <polyline points="960,340 1000,340 1000,240 964,240" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a)"/>
+  <text x="1008" y="300" font-size="12" fill="#b91c1c">rejected</text>
+  <text x="1008" y="315" font-size="12" fill="#b91c1c">calls</text>
+
+  <!-- Observation lines to trajectory -->
+  <line x1="620" y1="480" x2="504" y2="500" stroke="#6b7280" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#g)"/>
+  <line x1="440" y1="230" x2="360" y2="426" stroke="#6b7280" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#g)"/>
+  <text x="300" y="320" font-size="12" fill="#4b5563">prompt.submitted</text>
+
+  <!-- Observation badges -->
+  <circle cx="160" cy="250" r="16" fill="#111827"/><text x="160" y="255" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">O1</text>
+  <text x="185" y="255" font-size="12" fill="#111827">TUI shows final answer only</text>
+  <circle cx="80" cy="595" r="16" fill="#111827"/><text x="80" y="600" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">O2</text>
+  <text x="104" y="600" font-size="12" fill="#111827">request, execution, result, and call ID observable here</text>
+  <circle cx="990" cy="372" r="16" fill="#111827"/><text x="990" y="377" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">O3</text>
+
+  <!-- Sequence table -->
+  <text x="40" y="700" font-size="19" font-weight="bold" fill="#111827">M1 numbered sequence: "Who owns device D-101?" (from trajectory m1/events.jsonl)</text>
+  <rect x="40" y="715" width="1320" height="32" fill="#e5e7eb"/>
+  <g font-size="14" font-weight="bold" fill="#111827">
+    <text x="55" y="737">Step</text><text x="120" y="737">Seq</text><text x="190" y="737">Call ID</text><text x="470" y="737">Tool</text><text x="560" y="737">Action</text><text x="980" y="737">Outcome</text>
+  </g>
+  <g font-size="14" fill="#111827">
+    <text x="55" y="772">1–2</text><text x="120" y="772">—</text><text x="190" y="772">—</text><text x="470" y="772">—</text><text x="560" y="772">Prompt sent TUI → Gateway → runtime → Gemini with tool defs</text><text x="980" y="772">prompt.submitted</text>
+    <text x="55" y="800">3–4</text><text x="120" y="800">10–11</text><text x="190" y="800">call_1345322</text><text x="470" y="800">exec</text><text x="560" y="800">Read devices.csv</text><text x="980" y="800" fill="#b91c1c">failed: invalid_input</text>
+    <text x="55" y="828">3–4</text><text x="120" y="828">16–17</text><text x="190" y="828">call_948907</text><text x="470" y="828">read</text><text x="560" y="828">$WORKSPACE_DIR/midterm_data/devices.csv</text><text x="980" y="828" fill="#b91c1c">failed: Tool read not found</text>
+    <text x="55" y="856">3–4</text><text x="120" y="856">22–23</text><text x="190" y="856">call_728548</text><text x="470" y="856">exec</text><text x="560" y="856">Read devices csv via API.read</text><text x="980" y="856" fill="#b91c1c">failed: internal_error</text>
+    <text x="55" y="884">3–4</text><text x="120" y="884">28–29</text><text x="190" y="884">call_1262413</text><text x="470" y="884">exec</text><text x="560" y="884">Search catalog for read tool</text><text x="980" y="884" fill="#15803d">completed</text>
+    <text x="55" y="912">3–5</text><text x="120" y="912">34–35</text><text x="190" y="912">call_103245 → :read:1</text><text x="470" y="912">exec→read</text><text x="560" y="912">Read devices.csv using catalog read tool</text><text x="980" y="912" fill="#15803d">nested read started</text>
+    <text x="55" y="940">6</text><text x="120" y="940">36</text><text x="190" y="940">tool_call:call_103245:read:1</text><text x="470" y="940">read</text><text x="560" y="940">midterm_data/devices.csv</text><text x="980" y="940" fill="#15803d">success: "D-101,Elena Ortiz,…"</text>
+    <text x="55" y="968">6–7</text><text x="120" y="968">38</text><text x="190" y="968">call_103245</text><text x="470" y="968">exec</text><text x="560" y="968">Parent exec completes; result returned to model</text><text x="980" y="968" fill="#15803d">completed</text>
+    <text x="55" y="996">8–9</text><text x="120" y="996">—</text><text x="190" y="996">—</text><text x="470" y="996">—</text><text x="560" y="996">Final answer → Gateway → TUI</text><text x="980" y="996">"D-101 is owned by Elena Ortiz"</text>
+  </g>
+  <line x1="40" y1="1010" x2="1360" y2="1010" stroke="#d1d5db"/>
+
+  <!-- Legend -->
+  <text x="40" y="1040" font-size="13" fill="#374151">Solid arrows: observed data flow. Dashed gray: recorded in trajectory. Dashed red: runtime rejected the model's call (O3, seq 17 "Tool read not found").</text>
+  <text x="40" y="1062" font-size="13" fill="#374151">Inference (not directly observed): how Gemini internally chose each tool, and how code mode dispatches the nested catalog read inside exec.</text>
+  <text x="40" y="1084" font-size="13" fill="#374151">Paths in the trajectory are redacted by OpenClaw ($WORKSPACE_DIR); the TUI hid all five tool calls and showed only the final answer (O1).</text>
+</svg>
