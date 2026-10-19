@@ -40,7 +40,7 @@ nvm install 24 && nvm alias default 24
 npm view openclaw@latest version dist.shasum dist.integrity
 mkdir -p ~/openclaw-install && cd ~/openclaw-install
 npm pack openclaw@latest
-sha1sum openclaw-*.tgz                                   # must equal dist.shasum
+sha1sum openclaw-*.tgz                                   
 openssl dgst -sha512 -binary openclaw-*.tgz | base64 -w0; echo   # must equal dist.integrity (after "sha512-")
 
 # 3. Install from the verified file (npm 11 blocks install scripts by default)
@@ -96,4 +96,4 @@ No API keys or Gateway tokens are stored in this repository. Screenshots are cro
 
 ## AI assistance
 
-We used Claude (Anthropic) for setup and troubleshooting commands, interpreting trajectory output, writing `summarize.py`, drawing the diagram and chart, and drafting documentation. We ran every command ourselves and checked every call ID and result against our exported trajectories.
+We used Claude (Anthropic) for setup and troubleshooting commands, assistance in interpreting trajectory output and writing `summarize.py`, drawing the diagram and chart. We ran every command ourselves and checked every call ID and result against our exported trajectories.
